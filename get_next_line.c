@@ -12,13 +12,15 @@
 
 #include "get_next_line.h"
 
-char	*ft_read_file(char *str, int fd)
+char	*ft_read(char *str, int fd)
 {
-	char	buff[BUFFER_SIZE + 1];
+	char	*buff;
 	int		ret;
 	int		i;
 	char	*tmp;
 
+	if (!(buff = malloc(sizeof(char) * BUFFER_SIZE + 1)))
+		return (0);
 	i = 0;
 	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
@@ -56,7 +58,7 @@ int		get_next_line(int fd, char **line)
 		|| fd >= OPEN_MAX)
 		return (-1);
 	if (str[fd] == NULL || ft_strchrn(str[fd]) == 0)
-		str[fd] = ft_read_file(str[fd], fd);
+		str[fd] = ft_read(str[fd], fd);
 	if (str[fd] == NULL)
 		return (*line = ft_strdup("")) != NULL ? 0 : -1;
 	i = ft_until_n(str[fd]);
@@ -69,5 +71,6 @@ int		get_next_line(int fd, char **line)
 		return (1);
 	}
 	free(str[fd]);
+	//str[fd] = NULL;
 	return (0);
 }

@@ -20,8 +20,8 @@ char		*ft_strdup(const char *src);
 int			ft_until_n(char *str);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 500                                                                                               
-#  define OPEN_MAX 5000
+#  define BUFFER_SIZE 3                                                                                            
+#  define OPEN_MAX 10
 
 # endif
 
