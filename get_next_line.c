@@ -5,28 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/23 09:44:40 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/25 10:00:27 by faubert          ###   ########.fr       */
+/*   Created: 2020/02/27 10:08:13 by faubert           #+#    #+#             */
+/*   Updated: 2020/02/27 15:03:23 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read(char *str, int fd)
+char		*ft_read(char *str, int fd)
 {
-	char	*buff;
+	char	*buf;
 	int		ret;
 	int		i;
 	char	*tmp;
 
-	if (!(buff = malloc(sizeof(char) * BUFFER_SIZE + 1)))
-		return (0);
+	if (!(buf = malloc(sizeof(char) * BUFFER_SIZE + 1)))
+		return (NULL);
 	i = 0;
-	while ((ret = read(fd, buff, BUFFER_SIZE)) > 0)
+	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		buff[ret] = '\0';
+		buf[ret] = '\0';
 		tmp = str;
-		str = ft_strjoin(tmp, buff);
+		str = ft_strjoin(tmp, buf);
 		free(tmp);
 		while (str[i])
 		{
@@ -35,10 +35,11 @@ char	*ft_read(char *str, int fd)
 			i++;
 		}
 	}
+	free(buf);
 	return (str);
 }
 
-int		ft_until_n(char *str)
+int			ft_n_pos(char *str)
 {
 	int i;
 
@@ -48,20 +49,20 @@ int		ft_until_n(char *str)
 	return (i);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	static char		*str[OPEN_MAX];
 	int				i;
 	char			*tmp;
 
 	if (read(fd, str[fd], 0) < 0 || !line || BUFFER_SIZE <= 0 || fd < 0 
-		|| fd >= OPEN_MAX)
+			|| fd >= OPEN_MAX)
 		return (-1);
-	if (str[fd] == NULL || ft_strchrn(str[fd]) == 0)
+	if (str[fd] == NULL || ft_has_n(str[fd]) == 0)
 		str[fd] = ft_read(str[fd], fd);
 	if (str[fd] == NULL)
 		return (*line = ft_strdup("")) != NULL ? 0 : -1;
-	i = ft_until_n(str[fd]);
+	i = ft_n_pos(str[fd]);
 	*line = ft_substr(str[fd], 0, i);
 	if (str[fd] != NULL && str[fd][i] == '\n')
 	{
@@ -71,6 +72,6 @@ int		get_next_line(int fd, char **line)
 		return (1);
 	}
 	free(str[fd]);
-	//str[fd] = NULL;
+	str[fd] = NULL;
 	return (0);
 }
