@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:24 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 17:37:59 by faubert          ###   ########.fr       */
+/*   Updated: 2020/02/27 21:54:45 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <fcntl.h>
+# define CHECK_LEAKS
+#include "leak_detector.h"
 
 int			ft_has_n(const char *str);
 int			ft_n_pos(const char *str);
