@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:13 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 15:03:23 by faubert          ###   ########.fr       */
+/*   Updated: 2020/02/27 15:35:03 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,13 @@ char		*ft_read(char *str, int fd)
 	return (str);
 }
 
-int			ft_n_pos(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	return (i);
-}
-
 int			get_next_line(int fd, char **line)
 {
 	static char		*str[OPEN_MAX];
 	int				i;
 	char			*tmp;
 
-	if (read(fd, str[fd], 0) < 0 || !line || BUFFER_SIZE <= 0 || fd < 0 
+	if (BUFFER_SIZE < 1 || fd < 0 || read(fd, str[fd], 0) < 0 || !line
 			|| fd >= OPEN_MAX)
 		return (-1);
 	if (str[fd] == NULL || ft_has_n(str[fd]) == 0)

@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:34 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 14:55:54 by faubert          ###   ########.fr       */
+/*   Updated: 2020/02/27 15:39:48 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ int			ft_has_n(const char *str)
 		str++;
 	}
 	return (0);
+}
+
+int			ft_n_pos(const char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);
 }
 
 size_t		ft_strlen(const char *s)
