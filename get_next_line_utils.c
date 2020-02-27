@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:34 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 15:39:48 by faubert          ###   ########.fr       */
+/*   Updated: 2020/02/27 17:52:22 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ int			ft_has_n(const char *str)
 	if (!str)
 		return (0);
 	while (*str)
-	{
-		if (*str == '\n')
+		if (*str++ == '\n')
 			return (1);
-		str++;
-	}
 	return (0);
 }
 

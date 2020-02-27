@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:13 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 15:35:03 by faubert          ###   ########.fr       */
+/*   Updated: 2020/02/27 17:39:53 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int			get_next_line(int fd, char **line)
 	int				i;
 	char			*tmp;
 
-	if (BUFFER_SIZE < 1 || fd < 0 || read(fd, str[fd], 0) < 0 || !line
-			|| fd >= OPEN_MAX)
+	if (BUFFER_SIZE < 1 || fd < 0 || fd >= OPEN_MAX || read(fd, str[fd], 0) < 0
+			|| !line)
 		return (-1);
 	if (str[fd] == NULL || ft_has_n(str[fd]) == 0)
 		str[fd] = ft_read(str[fd], fd);
