@@ -12,7 +12,6 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 int				main(void)
 {
@@ -67,6 +66,5 @@ int				main(void)
 	*/
 	close(fd1);
 	free(line1);
-	CHECK_LEAKS;
 	return (0);
 }

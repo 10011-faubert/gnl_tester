@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <fcntl.h>
-# define CHECK_LEAKS
-#include "leak_detector.h"
 
 int			ft_has_n(const char *str);
 int			ft_n_pos(const char *str);
@@ -30,8 +28,10 @@ char		*ft_read(char *str, int fd);
 int			get_next_line(int fd, char **line);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-
+#  define BUFFER_SIZE 10
+# endif
+# ifndef OPEN_MAX
+#  define OPEN_MAX 42
 # endif
 
 #endif
