@@ -78,8 +78,8 @@ char		*ft_substr(const char *s, size_t start, size_t len)
 	while (i < len && s[start])
 	{
 		str[i] = s[start];
-		i++;
 		start++;
+		i++;
 	}
 	str[i] = '\0';
 	return (str);

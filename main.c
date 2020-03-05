@@ -12,6 +12,9 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
+#include "get_next_line.c"
+#include "get_next_line_utils.c"
+
 
 int				main(void)
 {
@@ -32,8 +35,12 @@ int				main(void)
 	int             ret3 = 1;
 	int             ret4 = 1;
 
+	printf("fd1 = %d\n", fd1);
+	printf("fd2 = %d\n", fd2);
+	printf("fd3 = %d\n", fd3);
+	printf("fd4 = %d\n", fd4);
 	printf("\n//\n// \tReading files test1.txt & test2.txt\n//\n");
-	/*
+	
 	for (int i = 0; i < 3; i++)
 	{
 		ret1 = get_next_line(fd1, &line1);
@@ -44,7 +51,7 @@ int				main(void)
 		ret2 = get_next_line(fd2, &line2);
 		printf("\n%d |%s", ret2, line2);
 	}
-	*/
+
 
 	while ((ret1 = get_next_line(fd1, &line1)) > 0)
 		printf("\n%d |%s", ret1, line1);
@@ -66,5 +73,6 @@ int				main(void)
 	*/
 	close(fd1);
 	free(line1);
+	free(line2);
 	return (0);
 }
