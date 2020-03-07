@@ -17,7 +17,6 @@ char		*ft_read(char *str, int fd)
 	char	*buf;
 	int		ret;
 	int		i;
-	char	*to_free;
 
 	if (!(buf = malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (NULL);
@@ -25,15 +24,13 @@ char		*ft_read(char *str, int fd)
 	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		to_free = str;
-		str = ft_strjoin(to_free, buf);
-		free(to_free);
+		str = ft_strjoin(str, buf);
 		while (str[i])
-		{
-			if (str[i] == '\n')
+			if (str[i++] == '\n')
+			{
+				free(buf);
 				return (str);
-			i++;
-		}
+			}
 	}
 	free(buf);
 	return (str);

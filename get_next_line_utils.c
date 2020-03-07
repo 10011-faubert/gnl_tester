@@ -85,7 +85,7 @@ char		*ft_substr(const char *s, size_t start, size_t len)
 	return (str);
 }
 
-char		*ft_strjoin(const char *s1, const char *s2)
+char		*ft_strjoin(char *s1, const char *s2)
 {
 	char	*str;
 	int		i;
@@ -110,5 +110,6 @@ char		*ft_strjoin(const char *s1, const char *s2)
 		j++;
 	}
 	str[i + j] = '\0';
+	free(s1);
 	return (str);
 }

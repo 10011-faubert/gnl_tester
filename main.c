@@ -10,38 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define OPEN_MAX 42
+#define	CHECK_LEAKS
+#include "leak_detector.h"
 #include "get_next_line.h"
 #include <stdio.h>
 #include "get_next_line.c"
 #include "get_next_line_utils.c"
 
-
 int				main(void)
 {
 	int             fd1;
-	int             fd2;
-	int             fd3;
-	int             fd4;
+//	int             fd2;
+//	int             fd3;
+//	int             fd4;
 	char            *line1;
-	char            *line2;
-	char			*line3;
-	char			*line4;
+//	char            *line2;
+//	char			*line3;
+//	char			*line4;
 	fd1 = open("test1.txt", O_RDONLY);
-	fd2 = open("test2.txt", O_RDONLY);
-	fd3 = open("test3.txt", O_RDONLY);
-	fd4 = open("test4.txt", O_RDONLY);
+//	fd2 = open("test2.txt", O_RDONLY);
+//	fd3 = open("test3.txt", O_RDONLY);
+//	fd4 = open("test4.txt", O_RDONLY);
 	int             ret1 = 1;
-	int             ret2 = 1;
-	int             ret3 = 1;
-	int             ret4 = 1;
+//	int             ret2 = 1;
+//	int             ret3 = 1;
+//	int             ret4 = 1;
 
 	printf("fd1 = %d\n", fd1);
-	printf("fd2 = %d\n", fd2);
-	printf("fd3 = %d\n", fd3);
-	printf("fd4 = %d\n", fd4);
+//	printf("fd2 = %d\n", fd2);
+//	printf("fd3 = %d\n", fd3);
+//	printf("fd4 = %d\n", fd4);
 	printf("\n//\n// \tReading files test1.txt & test2.txt\n//\n");
 	
-	for (int i = 0; i < 3; i++)
+	/*for (int i = 0; i < 3; i++)
 	{
 		ret1 = get_next_line(fd1, &line1);
 		printf("\n%d |%s", ret1, line1);
@@ -52,9 +54,13 @@ int				main(void)
 		printf("\n%d |%s", ret2, line2);
 	}
 
-
+	*/
 	while ((ret1 = get_next_line(fd1, &line1)) > 0)
+	{
 		printf("\n%d |%s", ret1, line1);
+		free(line1);
+	}
+	free(line1);
 
 	/*
 	while ((ret2 = get_next_line(fd2, &line2)) > 0)
@@ -72,7 +78,9 @@ int				main(void)
 
 	*/
 	close(fd1);
-	free(line1);
-	free(line2);
+	//free(line1);
+	//free(line2);
+	__print_leaks();
+	//system("leaks a.out"); 
 	return (0);
 }
