@@ -6,23 +6,30 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:13 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 22:15:39 by faubert          ###   ########.fr       */
+/*   Updated: 2020/03/07 15:49:52 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
 
 char		*ft_read(char *str, int fd)
 {
 	char	*buf;
-	int		ret;
+	long int		ret;
 	int		i;
+	long int		j = BUFFER_SIZE;
 
 	if (!(buf = malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (NULL);
 	i = 0;
-	while ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
+	printf("\n===%ld===\n", j);
+	printf("\nsize_t : %lu\n", sizeof(size_t));
+	printf("\nssize_t : %lu\n", sizeof(ssize_t));
+	printf("\nint : %lu\n", sizeof(int));
+	while ((ret = (long int)read(fd, buf, BUFFER_SIZE)) != 0)
 	{
+		printf("\n===%lu===\n", ret);
 		buf[ret] = '\0';
 		str = ft_strjoin(str, buf);
 		while (str[i])
@@ -42,8 +49,8 @@ int			get_next_line(int fd, char **line)
 	int				i;
 	char			*to_free;
 
-	if (BUFFER_SIZE < 1 || fd < 0 || fd >= OPEN_MAX || read(fd, str[fd], 0) < 0
-			|| !line)
+	if (BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX || fd < 0 || fd >= OPEN_MAX
+			|| read(fd, str[fd], 0) < 0 || !line)
 		return (-1);
 	if (str[fd] == NULL || ft_has_n(str[fd]) == 0)
 		str[fd] = ft_read(str[fd], fd);

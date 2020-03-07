@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:24 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 21:54:45 by faubert          ###   ########.fr       */
+/*   Updated: 2020/03/07 15:33:56 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char		*ft_read(char *str, int fd);
 int			get_next_line(int fd, char **line);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 2147483648
 # endif
 # ifndef OPEN_MAX
 #  define OPEN_MAX 42

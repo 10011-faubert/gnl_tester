@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:34 by faubert           #+#    #+#             */
-/*   Updated: 2020/02/27 17:52:22 by faubert          ###   ########.fr       */
+/*   Updated: 2020/03/07 11:34:07 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char		*ft_substr(const char *s, size_t start, size_t len)
 	size_t		i;
 
 	if (!(s) || !(str = malloc(sizeof(char) * len + 1)))
-		return (NULL);
+		return (0);
 	if (start > ft_strlen(s))
 		return (str);
 	i = 0;
