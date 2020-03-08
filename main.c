@@ -41,55 +41,66 @@ int				main(void)
 	printf("fd2 = %d\n", fd2);
 	printf("fd3 = %d\n", fd3);
 	printf("fd4 = %d\n", fd4);
-	printf("\n//\n// \tReading files test1.txt & test2.txt\n//\n");
+	printf("\n//\n// \tReading test1.txt & test2.txt\n//\n");
 	
-	for (int i = 0; i < 3; i++)
+	while (ret1 > 0)
 	{
-		ret1 = get_next_line(fd1, &line1);
-		printf("\n%d |%s", ret1, line1);
+		if ((ret1 = get_next_line(fd1, &line1)) > 0)
+		{
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
+		}
+		else
+			printf("\n%d", ret1);
+	}
+	if (ret1 == 0)
 		free(line1);
-	}
-	for (int i = 0; i < 7; i++)
+	while (ret2 > 0)
 	{
-		ret2 = get_next_line(fd2, &line2);
-		printf("\n%d |%s", ret2, line2);
+		if ((ret2 = get_next_line(fd2, &line2)) > 0)
+		{
+			printf("\n%d |%s", ret2, line2);
+			free(line2);
+		}
+		else
+			printf("\n%d", ret2);
+	}
+	if (ret2 == 0)
 		free(line2);
-	}
 
 	
-	while ((ret1 = get_next_line(fd1, &line1)) > 0)
+	printf("\n\n//\n// \tReading test3.txt\n//\n");
+	while (ret3 > 0)
 	{
-		printf("\n%d |%s", ret1, line1);
-		free(line1);
+		if ((ret3 = get_next_line(fd3, &line3)) > 0)
+		{
+			printf("\n%d |%s", ret3, line3);
+			free(line3);
+	
+		}
+		else
+			printf("\n%d", ret3);
 	}
-	free(line1);
-
-	while ((ret2 = get_next_line(fd2, &line2)) > 0)
+	if (ret3 == 0)
+		free(line3);
+	printf("\n\n//\n// \tReading test4.txt\n//\n");
+	while (ret4 > 0)
 	{
-		printf("\n%d |%s", ret2, line2);
-		free(line2);
+		if ((ret4 = get_next_line(fd4, &line4)) > 0)
+		{
+			printf("\n%d |%s", ret4, line4);
+			free(line4);
+		}
+		else
+			printf("\n%d", ret4);
 	}
-	free(line2);
-	
-	printf("\n\n//\n// \tReading file test3.txt\n//\n");
-	ret3 = get_next_line(fd3, &line3);
-	printf("\n%d |%s", ret3, line3);
-	free(line3);
-	ret3 = get_next_line(fd3, &line3);
-	printf("\n%d |%s", ret3, line3);
-	free(line3);
-	
-	printf("\n\n//\n// \tReading file test4.txt\n//\n");
-	ret4 = get_next_line(fd4, &line4);
-	printf("\n%d |%s", ret4, line4);
-	free(line4);
-
+	if (ret4 == 0)
+		free(line4);
 	close(fd1);
 	close(fd2);
 	close(fd3);
 	close(fd4);
-	//free(line1);
-	//free(line2);
+	printf("\n");
 	__print_leaks();
 	return (0);
 }

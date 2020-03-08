@@ -28,7 +28,7 @@ char		*ft_read(char *str, int fd);
 int			get_next_line(int fd, char **line);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2147483648
+#  define BUFFER_SIZE 2
 # endif
 # ifndef OPEN_MAX
 #  define OPEN_MAX 42
