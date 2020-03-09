@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int			ft_has_n(const char *str)
+short int	ft_has_n(const char *str)
 {
 	if (!str)
 		return (0);

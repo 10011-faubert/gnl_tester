@@ -16,9 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <fcntl.h>
+# include <error.h>
+# include <stdio.h> // to delete
 
-int			ft_has_n(const char *str);
+short int	ft_has_n(const char *str);
 int			ft_n_pos(const char *str);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *src);

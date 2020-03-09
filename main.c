@@ -15,6 +15,7 @@
 #include "leak_detector.h"
 #include "get_next_line.h"
 #include <stdio.h>
+#include <fcntl.h>
 #include "get_next_line.c"
 #include "get_next_line_utils.c"
 
@@ -45,57 +46,35 @@ int				main(void)
 	
 	while (ret1 > 0)
 	{
-		if ((ret1 = get_next_line(fd1, &line1)) > 0)
-		{
-			printf("\n%d |%s", ret1, line1);
-			free(line1);
-		}
-		else
-			printf("\n%d", ret1);
-	}
-	if (ret1 == 0)
+		ret1 = get_next_line(fd1, &line1);
+		printf("\n%d |%s", ret1, line1);
 		free(line1);
+	}
+	
 	while (ret2 > 0)
 	{
-		if ((ret2 = get_next_line(fd2, &line2)) > 0)
-		{
-			printf("\n%d |%s", ret2, line2);
-			free(line2);
-		}
-		else
-			printf("\n%d", ret2);
-	}
-	if (ret2 == 0)
+		ret2 = get_next_line(fd2, &line2);
+		printf("\n%d |%s", ret2, line2);
 		free(line2);
+	}
 
-	
 	printf("\n\n//\n// \tReading test3.txt\n//\n");
 	while (ret3 > 0)
 	{
-		if ((ret3 = get_next_line(fd3, &line3)) > 0)
-		{
-			printf("\n%d |%s", ret3, line3);
-			free(line3);
-	
-		}
-		else
-			printf("\n%d", ret3);
-	}
-	if (ret3 == 0)
+		ret3 = get_next_line(fd3, &line3);
+		printf("\n%d |%s", ret3, line3);
 		free(line3);
+	}
+	
 	printf("\n\n//\n// \tReading test4.txt\n//\n");
 	while (ret4 > 0)
 	{
-		if ((ret4 = get_next_line(fd4, &line4)) > 0)
-		{
-			printf("\n%d |%s", ret4, line4);
-			free(line4);
-		}
-		else
-			printf("\n%d", ret4);
-	}
-	if (ret4 == 0)
+		ret4 = get_next_line(fd4, &line4);
+		printf("\n%d |%s", ret4, line4);
 		free(line4);
+	}
+	
+	
 	close(fd1);
 	close(fd2);
 	close(fd3);
