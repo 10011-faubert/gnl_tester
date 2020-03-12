@@ -12,17 +12,13 @@
 
 #include "get_next_line.h"
 
-// modifier INT_MAX par la valeur max en fonction de sizeof(ssize)
-
 char		*ft_read(char *str, int fd)
 {
 	char		*buf;
-	long int	ret;
-	int			i;
+	size_t		ret;
 
 	if (!(buf = malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (NULL);
-	i = 0;
 	ret = 1;
 	while (ret > 0)
 	{
@@ -41,17 +37,16 @@ int			get_next_line(int fd, char **line)
 {
 	static char		*str[FOPEN_MAX];
 	char			*to_free;
-	int				i;
-	
-	if (BUFFER_SIZE < 1 || BUFFER_SIZE > INT_MAX || fd < 0 || fd >= FOPEN_MAX
-			|| read(fd, str[fd], 0) < 0 || !line)
-		return (-1);
-	if (str[fd] == NULL || ft_has_nl(str[fd]) == 0)
-	 	if ((str[fd] = ft_read(str[fd], fd)) == NULL)
+	size_t			i;
+
+	if (BUFFER_SIZE < 1 || BUFFER_SIZE > SSIZE_MAX - 1 || fd < 0
+		|| fd >= FOPEN_MAX || read(fd, str[fd], 0) < 0 || !line
+		|| ((str[fd] == NULL || ft_has_nl(str[fd]) == 0)
+		&& ((str[fd] = ft_read(str[fd], fd)) == NULL)))
 			return (-1);
-	i = ft_n_pos(str[fd]);
+	i = ft_nl_pos(str[fd]);
 	*line = ft_substr(str[fd], 0, i);
-	if (str[fd] != NULL && str[fd][i] == '\n')
+	if (fd && str[fd] != NULL && ft_has_nl(&str[fd][i]))
 	{
 		to_free = str[fd];
 		str[fd] = ft_substr(to_free, i + 1, ft_strlen(to_free));

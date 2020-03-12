@@ -22,9 +22,9 @@ short int	ft_has_nl(const char *str)
 	return (0);
 }
 
-int			ft_n_pos(const char *str)
+size_t		ft_nl_pos(const char *str)
 {
-	int i;
+	size_t		i;
 
 	if (!str)
 		return (0);
@@ -36,7 +36,7 @@ int			ft_n_pos(const char *str)
 
 size_t		ft_strlen(const char *s)
 {
-	size_t i;
+	size_t		i;
 
 	if (!s)
 		return (0);
@@ -48,8 +48,8 @@ size_t		ft_strlen(const char *s)
 
 char		*ft_strdup(const char *src)
 {
-	char	*str;
-	int		i;
+	char		*str;
+	size_t		i;
 
 	if (!src || !(str = malloc((sizeof(char) * ft_strlen(src)) + 1)))
 		return (NULL);
@@ -85,9 +85,9 @@ char		*ft_substr(const char *s, size_t start, size_t len)
 
 char		*ft_strjoin(char *s1, const char *s2)
 {
-	char	*str;
-	int		i;
-	int		j;
+	char		*str;
+	size_t		i;
+	size_t		j;
 
 	if (!s1 && !s2)
 		return (NULL);

@@ -15,12 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
-# include <error.h>
-# include <stdio.h> // to delete
+# include <limits.h> // check if needed
+# include <stdint.h> // check if needed
 
 short int	ft_has_nl(const char *str);
-int			ft_n_pos(const char *str);
+size_t		ft_nl_pos(const char *str);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *src);
 char		*ft_strjoin(char *s1, const char *s2);
@@ -29,7 +28,7 @@ char		*ft_read(char *str, int fd);
 int			get_next_line(int fd, char **line);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 255 
 # endif
 
 #endif
