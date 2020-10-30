@@ -6,13 +6,11 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:09:19 by faubert           #+#    #+#             */
-/*   Updated: 2020/10/30 17:54:26 by faubert          ###   ########.fr       */
+/*   Updated: 2020/10/30 18:19:52 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#define OPEN_MAX 42
-#define	CHECK_LEAKS
-#include "leak_detector.h"
 #include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
@@ -33,8 +31,8 @@ int				main(void)
 	printf("\n%lu", SSIZE_MAX);
 
 	printf("\n//\n// \tReading test1.txt & test2.txt\n//\n");
-	while (ret1 > 0)
-	{
+	//while (ret1 > 0)
+	//{
 		ret1 = get_next_line(fd1, &line1);
 		if (ret1 != -1)
 		{
@@ -43,10 +41,7 @@ int				main(void)
 		}
 		else
 			printf("\n%d", ret1);
-	}
 
-	while (ret2 > 0)
-	{
 		ret2 = get_next_line(fd2, &line2);
 		if (ret2 != -1)
 		{
@@ -55,63 +50,62 @@ int				main(void)
 		}
 		else
 			printf("\n%d", ret2);
-	}
-
-
-	printf("\n\n//\n// \tReading test3.txt (nl)\n//\n");
-	while (ret3 > 0)
-	{
-		ret3 = get_next_line(fd3, &line3);
-		if (ret3 != -1)
+		
+		ret1 = get_next_line(fd1, &line1);
+		if (ret1 != -1)
 		{
-			printf("\n%d |%s", ret3, line3);
-			free(line3);
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
 		}
 		else
-			printf("\n%d", ret3);
-	}
+			printf("\n%d", ret1);
 
-
-	printf("\n\n//\n// \tReading test4.txt (empty)\n//\n");
-	while (ret4 > 0)
-	{
-		ret4 = get_next_line(fd4, &line4);
-		if (ret4 != -1)
+		ret1 = get_next_line(fd1, &line1);
+		if (ret1 != -1)
 		{
-			printf("\n%d |%s", ret4, line4);
-			free(line4);
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
 		}
 		else
-			printf("\n%d", ret4);
-	}
+			printf("\n%d", ret1);
 
-
-	printf("\n\n//\n// \tReading bitconnect (missing file)\n//\n");
-	while (ret5 > 0)
-	{
-		ret5 = get_next_line(fd5, &line5);
-		if (ret5 != -1)
+		ret2 = get_next_line(fd2, &line2);
+		if (ret2 != -1)
 		{
-			printf("\n%d |%s", ret5, line5);
-			free(line5);
+			printf("\n%d |%s", ret2, line2);
+			free(line2);
 		}
 		else
-			printf("\n%d", ret5);
-	}
-	printf("\n");
-	__print_leaks();
-
-	printf("\n\n//\n// \tReading fd 0 standard input 'q' to quit\n//\n");
-	while (line6)
-	{
-		ret6 = get_next_line(0, &line6);
-		printf("%d |%s\n\n", ret6, line6);
-		if (*line6 == 'q')
+			printf("\n%d", ret2);
+		
+		ret1 = get_next_line(fd1, &line1);
+		if (ret1 != -1)
 		{
-			free(line6);
-			break;
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
 		}
-		free(line6);
-	}
+		else
+			printf("\n%d", ret1);
+
+		ret1 = get_next_line(fd1, &line1);
+		if (ret1 != -1)
+		{
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
+		}
+		else
+			printf("\n%d", ret1);
+
+		ret1 = get_next_line(fd1, &line1);
+		if (ret1 != -1)
+		{
+			printf("\n%d |%s", ret1, line1);
+			free(line1);
+		}
+		else
+			printf("\n%d", ret1);
+
+	//}
+
 	return (0);
 }

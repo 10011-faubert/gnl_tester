@@ -1,42 +1,11 @@
-"Entre
-ce que je pense
-ce que je veux dire
-ce que je crois dire
-ce que je dis
-ce que vous avez envie d'entendre
-ce que vous croyez entendre
-ce que vous entendez
-ce que vous avez envie de comprendre
-ce que vous croyez comprendre
-ce que vous comprenez
-il y a dix possibilités qu'on ait des difficultés à communiquer.
-Mais essayons quand même ..."
-
-
-
-Bernard Werber
-
-
- "Entre 
-    ce que je pense 
-  
-	ce que je veux dire 
-   
-    ce que je crois dire 
-    
- 	ce que je dis 
-     
-	ce que vous avez envie d'entendre 
- 	
-	ce que vous croyez entendre		
-	ce que vous entendez 
-		  
-	ce que vous avez envie de comprendre
-	 		 	 	  			
-    ce que vous croyez comprendre
- 	ce que vous comprenez \0 
-	il y a dix possibilités qu'on ait des difficultés à communiquer. \n
- 	Mais essayons quand même ..." ; 
-        
-       
-	 Bernard Werber
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
+aaaaaaa
